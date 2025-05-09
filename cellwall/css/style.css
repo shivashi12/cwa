@@ -1,0 +1,117 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #111;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.slideshow-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.slide-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.slide-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.fade {
+  opacity: 0;
+}
+
+.controls {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.control-btn,
+.end-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.control-btn:hover,
+.end-btn:hover {
+  background-color: #155a9b;
+}
+
+.indicator {
+  position: absolute;
+  top: 20px;
+  font-size: 18px;
+  color: white;
+}
+
+  
+  .control-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .end-btn {
+    background-color: #FF4C4C;
+    color: white;
+  }
+  
+  .end-btn:hover {
+    background-color: #cc0000;
+  }
+  
+  /* Fade animation */
+  .fade {
+    animation: fadeEffect 0.5s;
+  }
+  
+  @keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+
+  .controls button {
+    padding: 10px 16px;
+    margin: 0 8px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .controls {
+    margin-top: 24px;
+  }
+  

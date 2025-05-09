@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Products</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ 
+
+    <h1>Select Products for Doctor</h1>
+  
+    <div id="product-list">
+      <!-- Product Images with Checkboxes -->
+      <div class="product">
+        <img src="images/celwall.jpg" alt="product 12" style="width: 150px;">
+        <input type="checkbox" value="images/celwall.jpg">
+      </div>
+      <div class="product">
+        <img src="images/product1.jpg" alt="Product 1" style="width: 150px;">
+        <input type="checkbox" value="images/product1.jpg">
+      </div>
+      <div class="product">
+        <img src="images/product2.jpg" alt="Product 2" style="width: 150px;">
+        <input type="checkbox" value="images/product2.jpg">
+      </div>
+      <div class="product">
+        <img src="images/product3.jpg" alt="Product 3" style="width: 150px;">
+        <input type="checkbox" value="images/product3.jpg">
+      </div>
+      <div class="product">
+          <img src="images/product4.jpg" alt="Product 4" style="width: 150px;">
+          <input type="checkbox" value="images/product4.jpg">
+        </div>
+        <div class="product">
+          <img src="images/product5.jpg" alt="Product 5" style="width: 150px;">
+          <input type="checkbox" value="images/product5.jpg">
+        </div>
+        <div class="product">
+          <img src="images/product6.jpg" alt="Product 6" style="width: 150px;">
+          <input type="checkbox" value="images/product6.jpg">
+        </div>
+        <div class="product">
+          <img src="images/product7.jpg" alt="Product 7" style="width: 150px;">
+          <input type="checkbox" value="images/product7.jpg">
+        </div>
+        <div class="product">
+          <img src="images/product8.jpg" alt="Product 8" style="width: 150px;">
+          <input type="checkbox" value="images/product8.jpg">
+        </div>
+        <div class="product">
+          <img src="images/product9.jpg" alt="Product 9" style="width: 150px;">
+          <input type="checkbox" value="images/product9.jpg">
+        </div>
+        <div class="product">
+          <img src="images/product10.jpg" alt="Product 10" style="width: 150px;">
+          <input type="checkbox" value="images/product10.jpg">
+        </div>
+        <div class="product">
+          <img src="images/product11.jpg" alt="Product 11" style="width: 150px;">
+          <input type="checkbox" value="images/product11.jpg">
+        </div>
+       
+  
+    <!-- Aur bhi products isi tarah add karna -->
+  </div>
+
+  <br>
+  <button id="start-slideshow">Start Slideshow</button>
+  <ul id="homepage-ul"></ul>
+  <script>
+    const selectedProducts = [];
+  
+    const checkboxes = document.querySelectorAll('#product-list input[type="checkbox"]');
+  
+    checkboxes.forEach(cb => {
+      cb.addEventListener('change', () => {
+        if (cb.checked) {
+          // Add if newly checked
+          selectedProducts.push(cb.value);
+        } else {
+          // Remove if unchecked
+          const index = selectedProducts.indexOf(cb.value);
+          if (index > -1) selectedProducts.splice(index, 1);
+        }
+      });
+    });
+  
+    document.getElementById('start-slideshow').addEventListener('click', function () {
+      if (selectedProducts.length > 0) {
+        localStorage.setItem('selectedProducts', JSON.stringify(selectedProducts));
+        window.location.href = 'slideshow.html';
+      } else {
+        alert('Please select at least one product.');
+      }
+    });
+  </script>
+  <button onclick="goBack()" class="end-btn">Back to Homepage</button>
+
+  <script>
+    function goBack() {
+      window.location.href = "doctor-list.html"; // Replace with your actual homepage file
+    }
+  </script>
+  
+  
+</body>
+</html>

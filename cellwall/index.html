@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- head टैग के अंदर -->
+<link rel="manifest" href="manifest.json" />
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js');
+  }
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div id="homepage">
+        <h1>Welcome to the E-Detailing App</h1>
+        
+        <!-- Buttons for Doctor List and Product List -->
+        <button id="doctorListButton" onclick="openDoctorList()">Doctor List</button>
+        <button id="productListButton" onclick="openProductList()">Product List</button>
+    </div>
+
+    <script>
+        // Function to navigate to the Doctor List page
+        function openDoctorList() {
+            window.location.href = 'doctor-list.html'; // Redirect to the Doctor List page
+        }
+
+        // Function to navigate to the Product List page
+        function openProductList() {
+            window.location.href = 'product-catalog.html'; // Redirect to the Product Catalog page
+        }
+
+        if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(reg => console.log("Service Worker Registered"))
+      .catch(err => console.error("Service Worker Failed", err));
+  }
+    </script>
+</body>
+</html>
+<img src="images/company-logo.png" alt="Company Logo" width="200">
+

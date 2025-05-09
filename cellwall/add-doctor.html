@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Doctor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="add-doctor-page">
+        <h1>Add Doctor Information</h1>
+
+        <!-- Doctor Information Form -->
+        <form id="doctor-form">
+            <label for="doctor-name">Doctor's Name:</label>
+            <input type="text" id="doctor-name" required><br>
+
+            <label for="education">Education:</label>
+            <input type="text" id="education" required><br>
+
+            <label for="specialty">Specialty:</label>
+            <input type="text" id="specialty" required><br>
+
+            <label for="hospital">Working Hospital:</label>
+            <input type="text" id="hospital" required><br>
+
+            <label for="meeting-time">Meeting Time:</label>
+            <input type="text" id="meeting-time" required><br>
+
+            <label for="meeting-day">Meeting Day:</label>
+            <input type="text" id="meeting-day" required><br>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" required><br>
+
+            <button type="button" onclick="addDoctorInfo()">Add Doctor</button>
+        </form>
+
+        <button onclick="goBack()">Back to Doctor List</button>
+    </div>
+
+    <script>
+        // Function to go back to Doctor List page
+        function goBack() {
+            window.location.href = 'doctor-list.html'; // Navigate back to doctor list page
+        }
+
+        // Function to add doctor information
+        function addDoctorInfo() {
+            var doctorName = document.getElementById('doctor-name').value;
+            var education = document.getElementById('education').value;
+            var specialty = document.getElementById('specialty').value;
+            var hospital = document.getElementById('hospital').value;
+            var meetingTime = document.getElementById('meeting-time').value;
+            var meetingDay = document.getElementById('meeting-day').value;
+            var city = document.getElementById('city').value;
+
+            if (doctorName && education && specialty && hospital && meetingTime && meetingDay && city) {
+                // Create new doctor object
+                var doctor = {
+                    name: doctorName,
+                    education: education,
+                    specialty: specialty,
+                    hospital: hospital,
+                    meetingTime: meetingTime,
+                    meetingDay: meetingDay,
+                    city: city
+                };
+
+                // Get the current doctor list from localStorage, if it exists
+                var doctorList = JSON.parse(localStorage.getItem('doctorList')) || [];
+
+                // Add the new doctor to the list
+                doctorList.push(doctor);
+
+                // Save the updated doctor list back to localStorage
+                localStorage.setItem('doctorList', JSON.stringify(doctorList));
+
+                // Clear the form and alert the user
+                document.getElementById('doctor-form').reset();
+                alert("Doctor added successfully!");
+
+                // Redirect back to the doctor list page
+                window.location.href = 'doctor-list.html';
+            } else {
+                alert("Please fill in all the fields.");
+            }
+        }
+    </script>
+</body>
+</html>
